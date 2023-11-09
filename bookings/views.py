@@ -20,8 +20,6 @@ def createbooking(request,id):
     user=User.objects.get(id=request.user.id)
     booking_status=False
     booking_date=datetime.now()
-    print('quantity', quantity)
-    print('total_cost', total_cost)
     bookorder=Bookorders(booking_status=booking_status,bookingdate=booking_date,item_id=item_id,user_id=user,quantity=quantity,total_cost=total_cost)
     bookorder.save()
     return redirect('bookings')
