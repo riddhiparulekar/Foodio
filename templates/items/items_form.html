@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+{% load static %}
+
+{% load widget_tweaks %}
+
+<form enctype="multipart/form-data" method="post">
+  {% csrf_token %}
+  <link rel="stylesheet" href="static/css/style8.css">
+
+  <div class="container">
+    <div class="form">
+      <!-- {{ i_items.as_p }} -->
+
+      {% for field in i_items.visible_fields %}
+      {% if field.name == "item_isveg" %}
+      <div class="form-outline mb-4">
+        <label class="form-label" for="id_username">{{ field.label_tag }}</label>
+        {% render_field field class="" %}
+        {% if field.help_text %}
+        {{ field.errors }}
+        <small class="form-text text-muted">{{ field.help_text }}</small>
+        {% endif %}
+      </div>
+      {% else %}
+      <div class="form-outline mb-4">
+        <label class="form-label" for="id_username">{{ field.label_tag }}</label>
+        {% render_field field class="form-control" %}
+        {% if field.help_text %}
+        {{ field.errors }}
+        <small class="form-text text-muted">{{ field.help_text }}</small>
+        {% endif %}
+      </div>
+      {% endif %}
+      {% endfor %}
+
+      <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+{% endblock %}

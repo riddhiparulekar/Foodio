@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block body %}
+{% load static %}
+
+<div class="container">
+    <h1 style=" text-align: center; ">Bookings</h1>
+    <div class="row row-cols-10 row-cols-md-3">
+        {% for order in orders %}
+        <div class="col mb-4">
+            <div class="d-flex mb-3">
+
+                <div class="p-2">
+
+                    <div class="card" style="width: 18rem;">
+
+                        <div class="card-body">
+                            <img src="/{{ order.item_id.item_img }}" style="width: 100%;height: auto;"
+                                class=" card-img-top" alt="{{ order.item_id.item_img }}">
+                            <h5 class="card-title">{{ order.item_name }}</h5>
+                            <!-- <p class="card-text">{{ item.item_description }}</p> -->
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">User {{ order.user_id }}</li>
+                            <li class="list-group-item">Quantity {{ order.quantity }}</li>
+                            <li class="list-group-item">Total Cost €{{ order.total_cost }} </li>
+                            <li class="list-group-item">Type
+                                {% if order.item_id.item_isveg %}
+                                {{ "Veg" }}
+                                {% else %}
+                                {{ "Non-Veg" }}
+                                {% endif %}
+                            </li>
+                        </ul>
+                        <div class="card-body">
+
+                            <button class="btn btn-primary next-btn"
+                                style="color:white; background-color: #fdbc00; border: 2px solid #fff;">
+                                <a href="{% url 'updatebooking' order.id %}" style="color:white">Delivered</a></button>
+                            <button class="btn btn-primary prev-btn"
+                                style="color:white; background-color: #fdbc00; border: 2px solid #fff;"> <a
+                                    href="{% url 'deletebookings' order.id %}" style="color:white">Delete</a></button>
+                            <!--  -->
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

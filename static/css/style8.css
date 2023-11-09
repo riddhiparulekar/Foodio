@@ -1,0 +1,141 @@
+
+.Repair {
+    width: 500px;
+    color: #d0b888;
+    margin: auto;
+    text-align: center;
+    padding: 10px 0px 10px 0px;
+    background-color: rgba(41, 18, 18, 0.9);
+    border-radius: 11px;
+
+    /*padding-top: 100px;*/
+
+}
+.repair textarea {
+   
+    /* padding: 5px; */
+    margin-top: 10px;
+    font-family: sans-serif;
+    border: floralwhite;
+    width: 100%;
+    border-bottom: 1px solid white;
+    /**/
+    padding: 8px;
+    /* margin-bottom: 20px; */
+    font-size: 13px;
+    font-weight: normal;
+    background-color: black;
+
+    color: white;
+  }
+
+.repair textarea:focus {
+  box-shadow: 3px 3px 10px rgb(228, 228, 228), -3px -3px 10px rgb(224, 224, 224);
+}
+
+.container {
+  
+    justify-content: center;
+    padding-left: 60px;
+    padding-top: 50px;
+    display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: auto;
+            /* height: 465px;
+            width: 350px;
+            box-shadow: -3px -2px 6px #6c6565, 7px 9px 25px #0b0b0b; */
+            /* color: rgb(255, 255, 255); */
+}
+
+.form {
+    width: 500px;/*450*/
+    height: 450px;/*400*/
+    background-color: rgba(41, 18, 18, 0.9);
+    /* color: rgb(255, 255, 255); */
+    color: #d0b888;
+    box-shadow: 0 5px 30px black;
+
+}
+
+.btn {
+    padding: 10px 0;
+    /* width: 150px; */
+    width: 100%;
+    border-radius: 20px;
+    background-color: #d0b888;
+    border-style: none;
+    color: rgb(5, 5, 5);
+    font-weight: 600;
+    margin-top: 10%;
+    /* width: 100%;
+    padding: 8px 0;
+    font-size: 20px;
+    color: rgb(44, 44, 44);
+    background-color: #D0B888;
+    border-radius: 5px; */
+}
+
+.formGroup {
+    display: flex;
+    justify-content: center;
+    padding: 8px;  
+    border-radius: 1.5em;
+
+}
+.dropdown{
+    background-color:#d0b888;
+    padding:5px 5px ;
+    display: block;
+ 
+}
+.dropdown-content a:hover {background-color: #ddd;}
+.dropdowm:hover{
+    background-color: #946048;
+}
+.formGroup input {
+    border: floralwhite;
+    width: 100%;
+    border-bottom: 1px solid white;
+    padding: 8px;
+    margin-bottom: 20px;
+    font-size: 13px;
+    font-weight: normal;
+    background-color: black;
+
+    color: white;
+
+}
+
+  .Prob{
+    color: #D0B888;
+    margin-bottom: 1.5%;
+    font-size: 13 px;
+  } 
+input:focus {
+    outline: none !important;
+    border-bottom: 2px solid #b89d69;
+    font-size: 13px;
+    font-weight: normal;
+    color: white;
+}
+
+.btn:hover {
+    background-color: #946048;
+    box-shadow: 3px 3px 10px rgb(228, 228, 228), -3px -3px 10px rgb(224, 224, 224);
+}
+
+.text {
+    color: black;/**/
+    font-size: 15px;
+}
+.image-upload > input
+{
+    display: none;
+}
+
+.image-upload img
+{
+    width: 35px;
+    cursor: pointer;
+}

@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+{% load static %}
+<form method="post" action="{% url 'createbookings' items.id %}">
+    {% csrf_token %}
+    <div class="container">
+        <h3 class="text-center">Make bookings</h3>
+        <div class="card border-0" style="width: 100%;">
+            <img src="/{{items.item_img}}" style="width: 40%" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{items.item_name}}</h5>
+                <p class="card-text">{{items.item_description}}</p>
+                Price € <span id="price">{{items.item_price}}</span>
+                <p> Quantity :
+                    <select id="menu" name="quantity" class="product-select" id="quantity"
+                        onchange="jsFunction(this.value);" tabindex="1">
+                        <option class="list" value="1" selected>1</option>
+                        <option class="list" value="2">2</option>
+                        <option class="list" value="3">3</option>
+                        <option class="list" value="4">4</option>
+                        <option class="list" value="5">5</option>
+                    </select>
+                </p>
+                Total Price: € <span id="cost">{{items.item_price}}</span>
+                <input id="t-cost" name="final_cal" value="{{ items.item_price }}" hidden>
+                <BR>
+                <button type="submit" class="btn btn-primary"
+                    style="background-color: #fdbc00;border: 2px solid #fff;">Order Now</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+<script type="text/javascript">
+    const price = document.getElementById('price').textContent;
+    const cost = document.getElementById('cost');
+    const total_cost = document.getElementById('t-cost');
+    function jsFunction(value)
+    {
+        console.log(price)
+        console.log(value)
+        const total = (price * value).toFixed(2);
+        cost.textContent = `${total}`;
+        total_cost.value = total;
+
+
+    }
+
+    // function documentOnload() {
+    //     console.log(price)
+    //     console.log(value)
+    //     const total = (price * value).toFixed(2);
+    //     cost.textContent = `${total}`;
+    //     total_cost.value = total;
+    // }
+
+    //     window.addEventListener('load', 
+    //     function() { 
+    //         console.log(price)
+    //     console.log(value)
+    //     const total = (price * value).toFixed(2);
+    //     cost.textContent = `${total}`;
+    //     total_cost.value = total;
+    //         }, false);
+    // window.onload = documentOnload;
+
+    // const price = parseFloat(document.getElementById('price').textContent);
+    // const cost = document.getElementById('cost');
+    // const total_cost = document.getElementById('t-cost');
+    // total_cost.value=1;
+
+    // function jsFunction(value) {
+    //     // Check if 'price' and 'value' are valid numbers
+    //     if (!isNaN(price) && !isNaN(value)) {
+    //         const total = (price * value).toFixed(2);
+    //         cost.textContent = `${total}`;
+    //         total_cost.value = total;
+    //     } else {
+    //         // Handle the case when 'price' or 'value' is not a valid number
+    //         console.error('Invalid price or value');
+    //     }
+    // }
+
+    // const priceElement = document.getElementById('price');
+    // const cost = document.getElementById('cost');
+    // const total_cost = document.getElementById('t-cost');
+
+    // if (priceElement && cost && total_cost) {
+    //     const price = parseFloat(priceElement.textContent);
+    //     const value = parseFloat(/* Get the user's input value here */);
+
+    //     if (!isNaN(price) && !isNaN(value)) {
+    //         const total = (price * value).toFixed(2);
+    //         cost.textContent = total;
+    //         total_cost.value = total;
+    //     } else {
+    //         console.error('Invalid price or value');
+    //     }
+    // } else {
+    //     console.error('One or more elements not found in the DOM.');
+    // }
+
+
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+    crossorigin="anonymous"></script>
+{% endblock %}

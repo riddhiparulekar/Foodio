@@ -1,0 +1,69 @@
+
+{% extends 'base.html' %}
+
+{% block body %}
+{% load static %}
+
+
+  <div class="container">
+    <div class="form">
+      <form class="repair" action="" method="get">
+        <div class="Repair">
+          <h5>Edit Food item</h5> 
+        </div>
+    
+        <div class="formGroup">
+          <table>
+             <tr>
+              <td><label for="name">Item Name:</label></td>
+              <td><input type="text" name="name" id="name" placeholder="Item Name"></td>
+            </tr>
+        
+            <tr>
+              <td><label for="language">Is Veg </label></td>
+              <td>
+                <select  class="dropdown" name="language" id="language" style="width: 180px;">
+                
+                  <option value="">Select Category</option>
+                  <option value="True">yes</option>
+                  <option value="False">No</option>
+
+                </select>
+              </td>
+            </tr>
+           
+            <tr>
+              <td><label for="about">Item Description:</label></td>
+              <td><textarea name="about" id="about" placeholder="Write in Detail..."></textarea></td>
+            </tr>
+            <tr>
+              <td>
+                <label for="upload">Upload item image:</label>
+              </td>
+         
+              <td >
+                <!-- <label for="avatar">Upload Picture:</label>
+         <button type="button"><input type="file" id="photo" name="photo" accept="image/*"></button>  -->
+         <div class="image-upload">
+          <label for="file-input">
+           
+              <img src="static/photos"/>
+          </label>
+      
+          <input id="file-input" type="file" accept="image/*" />
+       </div>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2"> <button type="button" class="btn">SUBMIT</button></td>
+            </tr>
+          </table>
+      </form>
+    </div>
+  
+  </div>
+  <link rel="stylesheet" href="static/css/style8.css">
+  <!-- <script src="jQuery.js"></script> -->
+
+{% endblock %}
+

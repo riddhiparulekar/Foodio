@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block body %}
+{% load static %}
+
+<div class="container">
+  <h1 style=" text-align: center; ">ITEMS</h1>
+  <a href="{% url 'items_forms_create_update'  %}" ><button class="btn btn-primary next-btn"  style="color:white; background-color: #fdbc00; border: 2px solid #fff;">Add Items</button></a>
+  <div class="row row-cols-10 row-cols-md-3">
+    {% for item in items %}
+  <div class="d-flex flex-row mb-3">
+    <div class="p-2">
+      <!-- <div class="p-2">Flex item 2</div>
+      <div class="p-2">Flex item 3</div> -->
+      <div class="card" style="width: 18rem;">
+
+        <div class="card-body">
+          <img src="/{{ item.item_img }}" style="width: 100%;height: auto;" class=" card-img-top"
+            alt="/{{ item.item_img }}">
+          <h5 class="card-title">{{ item.item_name }}</h5>
+          <!-- <p class="card-text">{{ item.item_description }}</p> -->
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Item Description {{ item.item_description }}</li>
+          <li class="list-group-item">Price €{{ item.item_price }} </li>
+          <li class="list-group-item">Type {{ item.item_isveg }}</li>
+        </ul>
+        <div class="card-body">
+          <!-- <a href="#" class="card-link">Card link</a>
+          <a href="#" class="card-link">Another link</a> -->
+
+          <button class="btn btn-primary prev-btn"
+            style="color:white; background-color: #fdbc00; border: 2px solid #fff;"> <a
+              href="{% url 'deleteitems' item.id %}" style="color:white;">Delete</a></button>
+          <button class="btn btn-primary next-btn"
+            style="color:white; background-color: #fdbc00; border: 2px solid #fff;">
+            <a
+            href="{% url 'items_forms_load' item.id %}" style="color:white">Edit</a></button>
+            <button class="btn btn-primary next-btn"
+            style="color:white; background-color: #fdbc00; border: 2px solid #fff;">
+            <a
+            href="{% url 'makeorder' item.id %}" style="color:white">Make item</a></button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+</div>
+{% endblock %}
