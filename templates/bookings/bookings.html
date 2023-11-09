@@ -33,10 +33,11 @@
                             </li>
                         </ul>
                         <div class="card-body">
-
+                            {% if user.is_superuser %}
                             <button class="btn btn-primary next-btn"
                                 style="color:white; background-color: #fdbc00; border: 2px solid #fff;">
                                 <a href="{% url 'updatebooking' order.id %}" style="color:white">Delivered</a></button>
+                            {% endif %}
                             <button class="btn btn-primary prev-btn"
                                 style="color:white; background-color: #fdbc00; border: 2px solid #fff;"> <a
                                     href="{% url 'deletebookings' order.id %}" style="color:white">Delete</a></button>

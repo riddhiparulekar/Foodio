@@ -10,20 +10,18 @@
             <i class="uil uil-times form_close"></i>
             <!--Login-->
             <div class="form login_form">
-                <form action="#">
+                <form action="{% url 'login' %}" method="POST">
+                    {% csrf_token %}
                     <h2>Login</h2>
                     <div class="input_box">
-                        <input type="email" name="username" placeholder="Username or Email" required>
+                        <input type="text" name="username" placeholder="Username or Email" required>
                         <i class="uil uil-envelope-alt email"></i>
                     </div>
                     <div class="input_box">
                         <input type="password" name="password" placeholder="Password" required>
                         <i class="uil uil-lock password"></i>
                         <i class="uil uil-eye-slash pw_hide"></i>
-
                     </div>
-
-
                     <div class="option_field">
                         <span class="checkbox">
                             <input type="checkbox" id="check">
@@ -32,7 +30,7 @@
                         <a href="#" class="forgot_pw">Forgot Password?</a>
                     </div>
 
-                    <button class="button">Login Now</button>
+                    <button class="button" type="submit">Login Now</button>
 
                     <div class="login_signup">
                         Don't have an account? <a href="#" id="signup">Signup</a>
@@ -42,6 +40,7 @@
             <!--Register-->
             <div class="form signup_form">
                 <form action="#">
+                    {% csrf_token %}
                     <h2>Signup</h2>
                     <div class="input_box">
                         <input type="email" placeholder="Enter your Email" required>
@@ -67,22 +66,7 @@
                 </form>
             </div>
 
-            <div class="slide-container">
-                <div class="slide-content">
-                    <div class="card-wrapper">
-                        <div class="card">
-                            <div class="image-content">
-                                <span class="overlay">
-
-                                </span>
-                                <div class="card-image">
-                                    <img src="" alt="" class="card-image">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
         </div>
     </section>
     <script src="static/js/script.js"></script>

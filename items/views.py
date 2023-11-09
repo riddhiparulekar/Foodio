@@ -1,12 +1,14 @@
 from django.shortcuts import render,redirect
 from .models import Items
 from .forms import ItemForm
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def items(request):
     data=Items.objects.all() #ORM 
     return render(request , 'items/items.html',{'items':data})
 
+@login_required
 def items_forms(request, id=0):
     if request.method == "GET":
         if id == 0:
@@ -31,6 +33,8 @@ def items_forms(request, id=0):
         return redirect('items')
     return render(request,'items/items.html')
 
+
+@login_required
 def delitems(request,id):
     data=Items.objects.get(id=id)
     data.delete()

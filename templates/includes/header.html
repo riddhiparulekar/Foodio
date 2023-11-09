@@ -237,15 +237,20 @@ text-decoration: underline;
         <ul class="nav_items">
             <li class="nav_item">
                 <a href="{% url 'home' %}" class="nav_link">Home</a>
-                <a href="#" class="nav_link">Categories</a>
                 <a href="{% url 'items' %}" class="nav_link">Items</a>
-                <a href="#" class="nav_link">About us</a>
+                {% if user.is_authenticated %}
                 <a href="{% url 'bookings' %}" class="nav_link">Bookings</a>
                 <a href="{% url 'orderhistory' %}" class="nav_link">Order History</a>
+                {% endif %}
+                <a href="#" class="nav_link">About us</a>
 
             </li>
         </ul>
+        {% if user.is_authenticated %}
+        <a href="{% url 'logout' %}"><button class="button">Logout</button></a>
+        {% else%}
         <button class="button" id="form-op">Login</button>
+        {% endif %}
      </nav>
     </header> 
     <BR>
