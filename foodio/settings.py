@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-yzvh(fdgp@z*%6*3rjj4%$-(@%b1+nmvk%^1r&(geo$0v1jmyn
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['http://foodio-x23101181-devopssec-proje-env.eba-vit3mkm8.eu-west-2.elasticbeanstalk.com']
+ALLOWED_HOSTS = ['foodio-x23101181-devopssec-proje-env.eba-vit3mkm8.eu-west-2.elasticbeanstalk.com']
 
 LOGIN_URL = 'login'
 
