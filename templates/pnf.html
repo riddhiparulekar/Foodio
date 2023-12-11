@@ -80,13 +80,13 @@ section {
   justify-content: center;
   cursor: pointer;  
 }
-.menu{
+.home{
   display: flex;
   flex-direction: column;
   margin-top: 15px;
   margin-left: 30px;
 }
-.menu li a{
+.home li a{
   display: flex;
   font-size: 1rem;
   color: #e0ffff;
@@ -109,13 +109,7 @@ section {
     width: 100%;
     padding: 20px 40px;
   }
-  .image{
-    display: flex;
-    width: 200px;
-    align-self: center;
-    justify-content: center;
-    margin: auto;
-  }
+
 }
 </style>
 <body>
@@ -127,11 +121,11 @@ section {
             Please redirect to the right URL <br>
             It's seems that you have headed to a wrong page</p>
        
-          <ul class="menu">
+          <ul class="home">
             <li><a href="{% url 'home' %}">Return to Homepage</a></li>
           </ul>
         </div>
-        <div><img class="image" src="static/images/Page_not_found.png" alt=""></div>
+   
       </div>
       </div>
     </section>
