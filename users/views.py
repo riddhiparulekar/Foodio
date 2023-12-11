@@ -37,7 +37,11 @@ def signup(request):
         first_name=request.POST.get('first_name')
         last_name=request.POST.get('last_name')
         emailid=request.POST.get('emailid')
-        password=request.POST.get('password2')
+        password=request.POST.get('password1')
+        conf_password=request.POST.get('password2')
+        if password != conf_password:
+            messages.error(request,'Both Passwords do not match')
+            return redirect('signup')
 
         user = User.objects.create_user(username=username, first_name=first_name, last_name=last_name, email=emailid, password=password)
         user.save()
