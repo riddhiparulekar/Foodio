@@ -1,16 +1,30 @@
 from django.shortcuts import render,redirect
 from django.contrib import auth,messages
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.http import require_http_methods
 from django.contrib.auth.models import User
 
 
+@require_http_methods(["GET"])
+def pagenotfound(request, exception):
+    return render(request,'pnf.html', status=404)
+ 
+ 
+@require_http_methods(["GET"])
+def servernotfound(request):
+    return render(request,'snf.html', status=500)
+
 # Create your views here.
+@require_http_methods(["GET"])
 def home(request):
     return render(request , 'home.html')
 
+@require_http_methods(["GET"])
 def about(request):
     return render(request , 'aboutus.html')
 
+
+@require_http_methods(["GET","POST"])
 def login(request):
     if request.method =="POST":
         username=request.POST.get('username')
@@ -24,11 +38,13 @@ def login(request):
     return render(request,'home.html')
 
 @login_required
+@require_http_methods(["GET"])
 def logout(request):
     auth.logout(request)
     return redirect('home')
 
-
+@login_required
+@require_http_methods(["GET","POST"])
 def signup(request):
     print('signup')
     if request.method =="POST":

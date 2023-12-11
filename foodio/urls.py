@@ -22,8 +22,9 @@ urlpatterns = [
     path('',include('users.urls')),
     path('bookings/',include('bookings.urls')),
     path('items/',include('items.urls')),
-
     # path('bookings',include('bookings.urls')),
     # path('items',include('items.urls')),
 
 ]
+handler404 = 'users.views.pagenotfound'
+handler500 = 'users.views.servernotfound'

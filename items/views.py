@@ -1,14 +1,17 @@
 from django.shortcuts import render,redirect
+from django.contrib.auth.decorators import login_required
+from django.views.decorators.http import require_http_methods
 from .models import Items
 from .forms import ItemForm
-from django.contrib.auth.decorators import login_required
-# Create your views here.
 
+@login_required
+@require_http_methods(["GET"])
 def items(request):
-    data=Items.objects.all() #ORM 
+    data=Items.objects.all()
     return render(request , 'items/items.html',{'items':data})
 
 @login_required
+@require_http_methods(["GET","POST"])
 def items_forms(request, id=0):
     if request.method == "GET":
         if id == 0:
@@ -35,10 +38,9 @@ def items_forms(request, id=0):
 
 
 @login_required
+@require_http_methods(["GET"])
 def delitems(request,id):
     data=Items.objects.get(id=id)
     data.delete()
     data=Items.objects.all() #ORM 
     return render(request , 'items/items.html',{'items':data})
-
-
