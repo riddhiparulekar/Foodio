@@ -34,6 +34,7 @@ ALLOWED_HOSTS = [
 
 LOGIN_URL = 'login'
 
+SESSION_COOKIE_HTTPONLY = True
 # Application definition
 
 INSTALLED_APPS = [
