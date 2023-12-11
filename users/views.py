@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from django.contrib import auth,messages
 from django.contrib.auth.decorators import login_required
+from django.conf.urls import handler500
 from django.views.decorators.http import require_http_methods
 from django.contrib.auth.models import User
 
@@ -17,57 +18,74 @@ def servernotfound(request):
 # Create your views here.
 @require_http_methods(["GET"])
 def home(request):
-    return render(request , 'home.html')
+    try:
+        return render(request , 'home.html')
+    except Exception:
+        return redirect(handler500)
 
 @require_http_methods(["GET"])
 def about(request):
-    return render(request , 'aboutus.html')
+    try:
+        return render(request , 'aboutus.html')
+    except Exception:
+        return redirect(handler500)
 
 
 @require_http_methods(["GET","POST"])
 def login(request):
-    if request.method =="POST":
-        username=request.POST.get('username')
-        password=request.POST.get('password')
-        user=auth.authenticate(username=username,password=password)
-        if user is not None:
-            auth.login(request,user)
-            return redirect('home')
-        else:
-            messages.error(request,'Invalid login details')
-    return render(request,'home.html')
+    try:
+        if request.method =="POST":
+            username=request.POST.get('username')
+            password=request.POST.get('password')
+            user=auth.authenticate(username=username,password=password)
+            if user is not None:
+                auth.login(request,user)
+                return redirect('home')
+            else:
+                messages.error(request,'Invalid login details')
+        return render(request,'home.html')
+    except Exception:
+        return redirect(handler500)
+    
 
 @login_required
 @require_http_methods(["GET"])
 def logout(request):
-    auth.logout(request)
-    return redirect('home')
+    try:
+        auth.logout(request)
+        return redirect('home')
+    except Exception:
+        return redirect(handler500)
+
 
 @login_required
 @require_http_methods(["GET","POST"])
 def signup(request):
-    print('signup')
-    if request.method =="POST":
-        print('post')
-        username=request.POST.get('username')
-        first_name=request.POST.get('first_name')
-        last_name=request.POST.get('last_name')
-        emailid=request.POST.get('emailid')
-        password=request.POST.get('password1')
-        conf_password=request.POST.get('password2')
-        if password != conf_password:
-            messages.error(request,'Both Passwords do not match')
-            return redirect('signup')
+    try:
+        print('signup')
+        if request.method =="POST":
+            print('post')
+            username=request.POST.get('username')
+            first_name=request.POST.get('first_name')
+            last_name=request.POST.get('last_name')
+            emailid=request.POST.get('emailid')
+            password=request.POST.get('password1')
+            conf_password=request.POST.get('password2')
+            if password != conf_password:
+                messages.error(request,'Both Passwords do not match')
+                return redirect('signup')
 
-        user = User.objects.create_user(username=username, first_name=first_name, last_name=last_name, email=emailid, password=password)
-        user.save()
-        print('saved')
-        user=auth.authenticate(username=username,password=password)
+            user = User.objects.create_user(username=username, first_name=first_name, last_name=last_name, email=emailid, password=password)
+            user.save()
+            print('saved')
+            user=auth.authenticate(username=username,password=password)
 
-        if user is not None:
-            auth.login(request,user)
-            print('logged in')
-            return redirect('home')
-        else:
-            messages.error(request,'Invalid login details')
-    return redirect('login')
+            if user is not None:
+                auth.login(request,user)
+                print('logged in')
+                return redirect('home')
+            else:
+                messages.error(request,'Invalid login details')
+        return redirect('login')
+    except Exception:
+        return redirect(handler500)
