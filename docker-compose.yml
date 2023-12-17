@@ -1,0 +1,17 @@
+version: "3"
+services:
+  foodio:
+    build:
+      context: .
+    container_name: foodio
+    restart: always
+    volumes:
+      - ./foodio:/foodio
+    ports:
+      - 5000:5000
+    networks:
+      - foodio
+    environment:
+      - SECRET_KEY=${SECRET_KEY}
+networks:
+  foodio:
